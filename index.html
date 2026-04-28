@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emo Barajas - Aprende a Manejar Emociones de Forma Divertida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --joy: #FFD93D;
+            --sadness: #6EC6FF;
+            --disgust: #6BCB77;
+            --guilt: #FF8C94;
+            --anxiety: #B388FF;
+            --anger: #FF6B6B;
+            --fear: #7868E6;
+            --primary: #5B21B6;
+            --primary-light: #7C3AED;
+            --cta-green: #22C55E;
+            --cta-hover: #16A34A;
+            --dark: #1E1B4B;
+            --white: #FFFFFF;
+            --light-bg: #F0F0FF;
+            --orange: #FF8C42;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* ===== FLOATING SHAPES ===== */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+            animation: floatShape 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--anger);
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: var(--joy);
+            top: 40%;
+            right: -3%;
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: var(--anxiety);
+            top: 70%;
+            left: 10%;
+            animation-delay: -10s;
+        }
+
+        .shape:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            background: var(--sadness);
+            top: 20%;
+            right: 15%;
+            animation-delay: -15s;
+        }
+
+        @keyframes floatShape {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(15px, -10px) scale(1.05);
+            }
+        }
+
+        /* ===== ANNOUNCEMENT BAR ===== */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--anger), var(--orange), var(--joy));
+            color: var(--white);
+            text-align: center;
+            padding: 10px 20px;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .announcement-bar span {
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--anger));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            font-size: 14px;
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            background: none;
+            -webkit-text-fill-color: #666;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--cta-green), var(--cta-hover));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(34, 197, 94, 0.4);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(170deg, #1E1B4B 0%, #312E81 40%, #4C1D95 100%);
+            padding: 80px 20px 100px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23ffffff' d='M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: var(--joy);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 217, 61, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .highlight-yellow {
+            color: var(--joy);
+            position: relative;
+        }
+
+        .hero h1 .highlight-blue {
+            color: #6EC6FF;
+        }
+
+        .hero h1 .highlight-pink {
+            color: var(--guilt);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.5vw, 22px);
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 600;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--cta-green), #059669);
+            color: white;
+            padding: 22px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(18px, 3vw, 24px);
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4), 0 0 0 0 rgba(34, 197, 94, 0.4);
+            animation: ctaPulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        @keyframes ctaPulse {
+            0% {
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4), 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4), 0 0 0 15px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4), 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-trust {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-trust svg {
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        /* ===== PHONE MOCKUP ===== */
+        .hero-mockup {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .phone-frame {
+            width: 260px;
+            height: 520px;
+            background: #1a1a2e;
+            border-radius: 40px;
+            border: 4px solid #333;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: #1a1a2e;
+            border-radius: 0 0 15px 15px;
+            z-index: 5;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Roulette Mockup */
+        .roulette-screen {
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .roulette-title {
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .roulette-wheel {
+            width: 200px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .roulette-stripe {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .stripe-joy {
+            background: #FFD93D;
+            color: #333;
+            text-shadow: none;
+        }
+
+        .stripe-sadness {
+            background: #6EC6FF;
+        }
+
+        .stripe-disgust {
+            background: #6BCB77;
+        }
+
+        .stripe-guilt {
+            background: #FF8C94;
+        }
+
+        .stripe-anxiety {
+            background: #B388FF;
+        }
+
+        .stripe-anger {
+            background: #FF6B6B;
+        }
+
+        .stripe-fear {
+            background: #7868E6;
+        }
+
+        .roulette-pointer {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 20px solid var(--joy);
+            filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Card Mockup */
+        .card-screen {
+            background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            height: 100%;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card-emotion-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .card-emotion-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            color: var(--anger);
+            margin-bottom: 8px;
+        }
+
+        .card-question {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-option {
+            background: #f0f0ff;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 11px;
+            color: #333;
+            text-align: left;
+            border: 2px solid transparent;
+        }
+
+        .card-option.correct {
+            border-color: var(--cta-green);
+            background: #ecfdf5;
+        }
+
+        /* ===== PAIN POINT SECTION ===== */
+        .pain-section {
+            padding: 80px 20px;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-emoji {
+            font-size: 50px;
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .pain-section h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .pain-section h2 .text-red {
+            color: var(--anger);
+        }
+
+        .pain-question {
+            font-size: clamp(18px, 3vw, 26px);
+            text-align: center;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 50px;
+            line-height: 1.4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .pain-card {
+            background: linear-gradient(135deg, #fff5f5, #fff0f6);
+            border-radius: 24px;
+            padding: 30px 25px;
+            border: 2px solid #ffe0e0;
+            transition: transform 0.3s;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pain-card-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .pain-card h4 {
+            font-size: 18px;
+            color: var(--anger);
+            margin-bottom: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+        }
+
+        .pain-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ===== SOLUTION SECTION ===== */
+        .solution-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--light-bg) 0%, #fff 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-section h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .solution-section h2 .text-green {
+            color: var(--cta-green);
+        }
+
+        .solution-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            background: white;
+            border-radius: 24px;
+            padding: 35px 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+            border: 2px solid #f0f0ff;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 10px 35px rgba(91, 33, 182, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            color: white;
+        }
+
+        .step-1 .step-number {
+            background: linear-gradient(135deg, var(--joy), var(--orange));
+        }
+
+        .step-2 .step-number {
+            background: linear-gradient(135deg, var(--anxiety), var(--fear));
+        }
+
+        .step-3 .step-number {
+            background: linear-gradient(135deg, var(--anger), var(--guilt));
+        }
+
+        .step-4 .step-number {
+            background: linear-gradient(135deg, var(--cta-green), #059669);
+        }
+
+        .step-content h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== APP DEMO SECTION ===== */
+        .demo-section {
+            padding: 80px 20px;
+            background: linear-gradient(170deg, #1E1B4B 0%, #312E81 100%);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .demo-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23ffffff' d='M0,32L48,37.3C96,43,192,53,288,53.3C384,53,480,43,576,37.3C672,32,768,32,864,37.3C960,43,1056,53,1152,53.3C1248,53,1344,43,1392,37.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .demo-section h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            text-align: center;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .demo-section h2 .text-yellow {
+            color: var(--joy);
+        }
+
+        .demo-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .demo-phones {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .demo-phone {
+            width: 240px;
+            height: 480px;
+            background: #1a1a2e;
+            border-radius: 36px;
+            border: 3px solid #333;
+            padding: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .demo-phone:hover {
+            transform: translateY(-10px);
+        }
+
+        .demo-phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 26px;
+            overflow: hidden;
+        }
+
+        .demo-label {
+            text-align: center;
+            color: var(--joy);
+            font-weight: 800;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        /* Screen 1: Roulette */
+        .screen-roulette {
+            background: linear-gradient(180deg, #4338ca, #6366f1);
+            padding: 25px 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .screen-roulette .screen-title {
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .mini-roulette {
+            width: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mini-stripe {
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 11px;
+            color: white;
+        }
+
+        /* Screen 2: Card */
+        .screen-card {
+            background: linear-gradient(180deg, #7c3aed, #a78bfa);
+            padding: 20px 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mini-card {
+            background: white;
+            border-radius: 18px;
+            padding: 18px;
+            width: 100%;
+            max-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .mini-card-emoji {
+            font-size: 40px;
+        }
+
+        .mini-card-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 16px;
+            color: var(--anger);
+            margin: 8px 0;
+        }
+
+        .mini-card-q {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .mini-option {
+            background: #f5f3ff;
+            border-radius: 10px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            font-size: 10px;
+            color: #333;
+            text-align: left;
+            border: 2px solid #e5e7eb;
+        }
+
+        .mini-option.selected {
+            border-color: var(--cta-green);
+            background: #ecfdf5;
+        }
+
+        .mini-option.wrong {
+            border-color: var(--anger);
+            background: #fef2f2;
+        }
+
+        /* Screen 3: Feedback */
+        .screen-feedback {
+            background: linear-gradient(180deg, #059669, #34d399);
+            padding: 20px 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feedback-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .feedback-text {
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feedback-reflection {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 15px;
+            color: white;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            padding: 80px 20px;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-section h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .benefits-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            font-weight: 600;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 35px 25px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #f8f9ff, #f0f0ff);
+            border: 2px solid #e8e8ff;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+            box-shadow: 0 10px 30px rgba(91, 33, 182, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== AGE BADGE ===== */
+        .age-badge-section {
+            padding: 40px 20px;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .age-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px 40px;
+            border-radius: 60px;
+            box-shadow: 0 8px 25px rgba(91, 33, 182, 0.2);
+        }
+
+        .age-badge .emoji {
+            font-size: 35px;
+        }
+
+        .age-badge .text {
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .age-badge .text span {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Fredoka One', cursive;
+            font-size: 42px;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+            font-weight: 700;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #1E1B4B 0%, #312E81 50%, #4C1D95 100%);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23ffffff' d='M0,32L48,37.3C96,43,192,53,288,53.3C384,53,480,43,576,37.3C672,32,768,32,864,37.3C960,43,1056,53,1152,53.3C1248,53,1344,43,1392,37.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .pricing-section h2 {
+            font-size: clamp(26px, 4vw, 40px);
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .pricing-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #ffffff, #f8f7ff);
+            border-radius: 32px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--joy);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--anger), var(--orange));
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 14px;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .pricing-original {
+            font-size: 24px;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .pricing-current {
+            font-family: 'Fredoka One', cursive;
+            font-size: 72px;
+            color: var(--cta-green);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .pricing-current .currency {
+            font-size: 32px;
+            vertical-align: super;
+        }
+
+        .pricing-period {
+            font-size: 16px;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .pricing-comparison {
+            background: #fef3c7;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pricing-comparison .emoji {
+            font-size: 28px;
+        }
+
+        .pricing-comparison p {
+            font-size: 14px;
+            font-weight: 700;
+            color: #92400e;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 35px;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0ff;
+        }
+
+        .pricing-feature:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-feature .check {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: #ecfdf5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cta-green);
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .pricing-feature span {
+            font-size: 15px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--cta-green), #059669);
+            color: white;
+            padding: 22px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+            border: none;
+            cursor: pointer;
+            animation: ctaPulse 2s infinite;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.4);
+        }
+
+        .pricing-guarantee {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #888;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .urgency-bar {
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 16px;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .urgency-bar .emoji {
+            font-size: 22px;
+        }
+
+        .urgency-bar p {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* ===== GUARANTEE SECTION ===== */
+        .guarantee-section {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .guarantee-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #fef3c7, #fffbeb);
+            border: 3px solid var(--joy);
+            border-radius: 30px;
+            padding: 40px 35px;
+        }
+
+        .guarantee-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .guarantee-box p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            padding: 80px 20px;
+            background: var(--light-bg);
+        }
+
+        .faq-section h2 {
+            font-size: clamp(26px, 4vw, 36px);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 18px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 2px solid #e8e8ff;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item.active {
+            border-color: var(--primary-light);
+        }
+
+        .faq-question {
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--dark);
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f7ff;
+        }
+
+        .faq-toggle {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary);
+            transition: transform 0.3s;
+            font-weight: 900;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 22px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            padding: 80px 20px;
+            background: linear-gradient(170deg, #1E1B4B, #312E81);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='%23f0f0ff' d='M0,32L48,37.3C96,43,192,53,288,53.3C384,53,480,43,576,37.3C672,32,768,32,864,37.3C960,43,1056,53,1152,53.3C1248,53,1344,43,1392,37.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(28px, 5vw, 44px);
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .final-cta h2 .text-yellow {
+            color: var(--joy);
+        }
+
+        .final-cta p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 600;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0f0d2e;
+            padding: 40px 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer .footer-links {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FLOATING CTA MOBILE ===== */
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(30, 27, 75, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 20px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .floating-cta .price-info {
+            color: white;
+        }
+
+        .floating-cta .price-info .original {
+            font-size: 12px;
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .floating-cta .price-info .current {
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            color: var(--cta-green);
+        }
+
+        .floating-cta .btn-float {
+            background: linear-gradient(135deg, var(--cta-green), #059669);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ===== CONFETTI ANIMATION ===== */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confettiFall 4s infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 15px 80px;
+            }
+
+            .phone-frame {
+                width: 220px;
+                height: 440px;
+            }
+
+            .step-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .demo-phone {
+                width: 200px;
+                height: 400px;
+            }
+
+            .pricing-card {
+                padding: 40px 25px;
+            }
+
+            .pricing-current {
+                font-size: 56px;
+            }
+
+            .stats-row {
+                gap: 30px;
+            }
+
+            .floating-cta {
+                display: block;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .btn-primary {
+                padding: 18px 35px;
+                font-size: 18px;
+            }
+
+            .pricing-card {
+                padding: 35px 20px;
+            }
+
+            .pricing-current {
+                font-size: 48px;
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== STARS ===== */
+        .stars {
+            color: var(--joy);
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        /* Contenedor YouTube */
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        /* Video YouTube */
+        .youtube-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .youtube-container {
+                margin: 20px auto;
+                border-radius: 15px;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .youtube-container {
+                aspect-ratio: 4/3;
+            }
+        }
+
+        /* Animación */
+        .youtube-container {
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span>🔥 OFERTA POR TIEMPO LIMITADO — Descarga Emo Barajas con <strong>68% de descuento</strong> — ¡Solo por
+            hoy! 🔥</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                🎴 Emo Barajas
+                <span>MANEJA EMOCIONES JUGANDO</span>
+            </div>
+            <a href="#oferta" class="nav-cta"> QUIERO MI DESCUENTO</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🏆 Aplicación #1 en educación emocional infantil</div>
+            <h1>
+                La Mejor Herramienta Para Que Tu Hijo <span class="highlight-yellow">Maneje Emociones</span> De Forma
+                <span class="highlight-blue">Simple, Ligera y Divertida</span>
+            </h1>
+            <div class="hero-video-container youtube-container">
+                <iframe width="100%" height="100%"
+                    src="https://www.youtube.com/embed/HKJYV_z5bAM?autoplay=1&mute=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="hero-subtitle">
+                <strong>Emo Barajas</strong> es la app que transforma las emociones difíciles de tu hijo en
+                oportunidades de aprendizaje. Con una ruleta de colores y tarjetas interactivas, tu pequeño aprenderá a
+                tomar mejores decisiones cuando las emociones lo invaden.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#oferta" class="btn-primary">
+                    🎴 ¡QUIERO MI DESCUENTO AHORA!
+                </a>
+                <span class="hero-trust">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    Descarga inmediata en Google Play &nbsp;•&nbsp; Garantía de 7 días
+                </span>
+            </div>
+        </div>
+
+        <!-- Phone Mockups -->
+        <div class="hero-mockup">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="roulette-screen">
+                        <div class="roulette-title">🎯 Elige tu emoción</div>
+                        <div class="roulette-wheel">
+                            <div class="roulette-stripe stripe-joy">😊 Alegría</div>
+                            <div class="roulette-stripe stripe-sadness">😢 Tristeza</div>
+                            <div class="roulette-stripe stripe-disgust">🤢 Asco</div>
+                            <div class="roulette-stripe stripe-guilt">😔 Culpa</div>
+                            <div class="roulette-stripe stripe-anxiety">😰 Ansiedad</div>
+                            <div class="roulette-stripe stripe-anger">😠 Ira</div>
+                            <div class="roulette-stripe stripe-fear">😨 Miedo</div>
+                            <div class="roulette-pointer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="card-screen">
+                        <div class="game-card">
+                            <div class="card-emotion-icon">😠</div>
+                            <div class="card-emotion-label">Ira</div>
+                            <div class="card-question">Un compañero te quitó tu juguete sin permiso. ¿Qué haces?</div>
+                            <div class="card-option correct">✅ B) Le digo que me lo devuelva con calma y busco a la
+                                maestra</div>
+                            <div class="card-option">A) Le grito y le quito algo suyo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-section">
+        <div class="container">
+            <span class="section-emoji">💔</span>
+            <h2>Sabemos que enseñar a un niño y que <span class="text-red">retenga la enseñanza</span> tal como queremos
+                puede ser un desafío...</h2>
+            <p class="pain-question">
+                ¿Te gustaría que tu hijo aprendiera a tomar mejores decisiones cuando está lleno de emociones o cuando
+                llegan emociones que son difíciles de abordar para él o ella?
+            </p>
+            <div class="pain-grid">
+                <div class="pain-card fade-up">
+                    <span class="pain-card-icon">😰</span>
+                    <h4>Dolor, Impotencia y Frustración</h4>
+                    <p>Al ver a tu pequeño enfrentando emociones difíciles y no saber cómo ayudarlo en los momentos en
+                        que más lo necesita.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-card-icon">😟</span>
+                    <h4>Miedo al Futuro</h4>
+                    <p>Te preocupa cómo va a manejar los desafíos en la escuela o con otros niños, y quieres prepararlo
+                        para enfrentar estas situaciones con confianza.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-card-icon">😔</span>
+                    <h4>Culpa por No Saber Cómo Ayudar</h4>
+                    <p>No sabes cómo consolarlo cuando está triste, enojado o asustado, y deseas hacer algo que
+                        realmente lo ayude a crecer emocionalmente.</p>
+                </div>
+            </div>
+            <p
+                style="text-align: center; font-size: 20px; font-weight: 800; color: var(--primary); max-width: 700px; margin: 0 auto;">
+                Por eso hemos diseñado una app <strong>directa a la solución</strong>. 🎯
+            </p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <span class="section-emoji">🎴</span>
+            <h2>¿Cómo Funciona <span class="text-green">Emo Barajas</span>?</h2>
+            <p class="solution-subtitle">
+                Una aplicación diseñada profesionalmente para que mamá y su hijo jueguen juntos y aprendan a gestionar
+                emociones de forma inteligente.
+            </p>
+            <div class="steps-container">
+                <div class="step-card step-1 fade-up">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>🎯 Tu Hijo Elige Su Emoción</h4>
+                        <p>En la app aparece una <strong>ruleta vertical de franjas de colores</strong> con diferentes
+                            sentimientos: alegría, tristeza, asco, culpa, ansiedad, ira y miedo. Tu hijo elige la
+                            emoción que quiere trabajar en ese momento.</p>
+                    </div>
+                </div>
+                <div class="step-card step-2 fade-up">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>🃏 Aparece una Tarjeta con una Situación Real</h4>
+                        <p>La app le presenta una <strong>tarjeta con una situación que viven los niños de su
+                                edad</strong>. Hay muchas tarjetas especial y profesionalmente seleccionadas para que tu
+                            hijo se identifique con las experiencias.</p>
+                    </div>
+                </div>
+                <div class="step-card step-3 fade-up">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4> Tu Hijo Elige Qué Haría</h4>
+                        <p>Con la tarjeta frente al sentimiento elegido, tu hijo debe <strong>elegir qué haría entre dos
+                                opciones de reacción</strong>: una correcta y una incorrecta. ¡Es como un juego donde él
+                            es el protagonista!</p>
+                    </div>
+                </div>
+                <div class="step-card step-4 fade-up">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>✨ Retroalimentación + Reflexión en Familia</h4>
+                        <p>La app le dice si acertó o se equivocó y le muestra una <strong>reflexión sobre esa
+                                situación</strong>. La mamá comparte esa reflexión con su hijo para convertir ese
+                            momento en una <strong>lección de vida</strong> que el niño nunca olvidará.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Demo Section -->
+    <section class="demo-section">
+        <div class="container">
+            <h2>Mira Cómo Se Ve <span class="text-yellow">Dentro de la App</span> 📱</h2>
+            <p class="demo-subtitle">Cada pantalla está diseñada para mantener a tu hijo engaged mientras aprende</p>
+            <div class="demo-phones">
+                <div class="demo-phone">
+                    <div class="demo-phone-screen">
+                        <div class="screen-roulette">
+                            <div class="screen-title">🎯 ¿Qué sientes hoy?</div>
+                            <div class="mini-roulette">
+                                <div class="mini-stripe stripe-joy">😊 Alegría</div>
+                                <div class="mini-stripe stripe-sadness"> Tristeza</div>
+                                <div class="mini-stripe stripe-disgust">🤢 Asco</div>
+                                <div class="mini-stripe stripe-guilt">😔 Culpa</div>
+                                <div class="mini-stripe stripe-anxiety">😰 Ansiedad</div>
+                                <div class="mini-stripe stripe-anger">😠 Ira</div>
+                                <div class="mini-stripe stripe-fear">😨 Miedo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-label">1. Ruleta de Emociones</div>
+                </div>
+                <div class="demo-phone">
+                    <div class="demo-phone-screen">
+                        <div class="screen-card">
+                            <div class="mini-card">
+                                <div class="mini-card-emoji">😠</div>
+                                <div class="mini-card-title">Ira</div>
+                                <div class="mini-card-q">Un compañero te quitó tu juguete sin permiso. ¿Qué haces?</div>
+                                <div class="mini-option wrong">A) Le grito y le quito algo suyo 😤</div>
+                                <div class="mini-option selected">B) Le digo con calma que me lo devuelva y busco ayuda
+                                    😌</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-label">2. Tarjeta + Opciones</div>
+                </div>
+                <div class="demo-phone">
+                    <div class="demo-phone-screen">
+                        <div class="screen-feedback">
+                            <div class="feedback-icon">🌟</div>
+                            <div class="feedback-text">¡Excelente respuesta!</div>
+                            <div class="feedback-reflection">
+                                Cuando sentimos ira, es importante respirar profundo y hablar con calma. Buscar ayuda de
+                                un adulto nos hace más valientes. 💪
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-label">3. Reflexión Final</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <span class="section-emoji">🌟</span>
+            <h2>Lo Que Tu Hijo Va a Lograr</h2>
+            <p class="benefits-subtitle">Resultados reales que los padres notan después de jugar con Emo Barajas</p>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon">🧠</span>
+                    <h4>Inteligencia Emocional</h4>
+                    <p>Aprende a identificar y nombrar sus emociones, el primer paso para manejarlas.</p>
+                </div>
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon"></span>
+                    <h4>Mejores Decisiones</h4>
+                    <p>Desarrolla la capacidad de elegir la respuesta correcta ante situaciones emocionales difíciles.
+                    </p>
+                </div>
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon">💪</span>
+                    <h4>Mayor Confianza</h4>
+                    <p>Se siente más seguro al enfrentar desafíos emocionales en la escuela y con amigos.</p>
+                </div>
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon">🤗</span>
+                    <h4>Conexión Familiar</h4>
+                    <p>Fortalece el vínculo entre mamá e hijo al compartir momentos de aprendizaje y reflexión.</p>
+                </div>
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon">🎮</span>
+                    <h4>Aprendizaje Divertido</h4>
+                    <p>A través del juego, tu hijo retiene las enseñanzas de forma natural y sin resistencia.</p>
+                </div>
+                <div class="benefit-card fade-up">
+                    <span class="benefit-icon"></span>
+                    <h4>Progreso Visible</h4>
+                    <p>Los padres notan cambios reales en cómo su hijo reacciona ante emociones difíciles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Age Badge -->
+    <section class="age-badge-section">
+        <div class="age-badge">
+            <span class="emoji">👦👧</span>
+            <div class="text">
+                Para niños de 4 a 10 años
+                <span>Contenido profesional adaptado por edad</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 style="font-size: 28px; margin-bottom: 5px;">Padres Que Ya Confían en Emo Barajas</h2>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Descargas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-label">Calificación en Play Store</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Tarjetas Profesionales</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="oferta">
+        <div class="container">
+            <h2>🎴 Elige Tu Oferta</h2>
+            <p class="pricing-subtitle">Inversión única — Sin suscripciones mensuales</p>
+
+            <div class="pricing-card">
+                <div class="pricing-badge">🔥 OFERTA POR TIEMPO LIMITADO</div>
+                <div class="pricing-original">$22.00 USD</div>
+                <div class="pricing-current"><span class="currency">U$</span>7</div>
+                <div class="pricing-period">Pago único • Acceso de por vida</div>
+
+                <div class="pricing-comparison">
+                    <span class="emoji">🍔</span>
+                    <p>¡Menos de lo que vale una hamburguesa!</p>
+                </div>
+
+                <div class="pricing-features">
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>App completa en Google Play</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Ruleta interactiva con 7 emociones</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>150+ tarjetas con situaciones reales</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Retroalimentación y reflexiones profesionales</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Diseño profesional pensado para niños de 4-10 años</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Perfecto para jugar mamá e hijo juntos</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Actualizaciones gratuitas</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <span class="check">✓</span>
+                        <span>Garantía de satisfacción de 7 días</span>
+                    </div>
+                </div>
+
+                <a href="https://play.google.com/store/apps/details?id=..." class="pricing-cta">
+                    🎴 ¡QUIERO MI DESCUENTO AHORA!
+                </a>
+
+                <div class="pricing-guarantee">
+                    🛡️ Garantía de devolución de 7 días — Sin preguntas
+                </div>
+
+                <div class="urgency-bar">
+                    <span class="emoji">⏰</span>
+                    <p>¡Oferta termina pronto! El precio vuelve a $22 USD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="guarantee-box">
+            <div class="guarantee-icon">️</div>
+            <h3>Garantía de Satisfacción Total — 7 Días</h3>
+            <p>
+                Queremos que estés 100% seguro/a de tu decisión. Si después de descargar Emo Barajas y jugar con tu hijo
+                no estás satisfecho/a, te devolvemos el <strong>100% de tu dinero</strong>. Sin preguntas, sin
+                complicaciones. Queremos que tu inversión sea cero riesgo.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cómo recibo la app después de pagar?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Inmediatamente después de tu compra, recibirás un enlace directo para descargar Emo Barajas
+                            desde Google Play Store. La app es tuya de por vida con un solo pago.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Para qué rango de edad es la app?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Emo Barajas está diseñada para niños de 4 a 10 años. Las tarjetas y situaciones están
+                            adaptadas profesionalmente para diferentes edades dentro de este rango.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Necesito conexión a internet para usarla?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Una vez descargada, la app funciona sin conexión a internet. Tu hijo puede jugar en cualquier
+                            momento y lugar.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cuántas tarjetas tiene la app?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Emo Barajas incluye más de 150 tarjetas con situaciones reales que los niños viven a diario,
+                            seleccionadas profesionalmente por expertos en educación emocional infantil.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Es seguro el pago?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutamente. El pago se procesa a través de Google Play Store con los más altos estándares
+                            de seguridad. Tu información financiera está completamente protegida.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Puedo pedir un reembolso?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, tienes 7 días de garantía. Si por cualquier razón no estás satisfecho, contáctanos y te
+                            devolvemos el 100% de tu dinero sin preguntas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>
+                Descárgala y Juega un Par de Tarjetas<br>
+                <span class="text-yellow">Cada Día con Tu Hijo</span> 🎴
+            </h2>
+            <p>
+                Los padres comprenderán que su hijo va aprendiendo a manejar diferentes emociones y situaciones del día
+                a día, ayudándolo a gestionar sus emociones más hábilmente y ser un niño más seguro.
+            </p>
+            <a href="#oferta" class="btn-primary" style="animation: ctaPulse 2s infinite;">
+                🎴 ¡QUIERO MI DESCUENTO — SOLO $7 USD!
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Contacto</a>
+        </div>
+        <p>© 2026 Emo Barajas. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px; font-size: 11px;">Este sitio no está afiliado a Google. Google Play y el logo de
+            Google Play son marcas registradas de Google LLC.</p>
+    </footer>
+
+    <!-- Floating CTA Mobile -->
+    <div class="floating-cta" id="floatingCta">
+        <div class="floating-cta-inner">
+            <div class="price-info">
+                <span class="original">$22</span>
+                <span class="current">$7 USD</span>
+            </div>
+            <a href="#oferta" class="btn-float">🎴 QUIERO MI DESCUENTO</a>
+        </div>
+    </div>
+
+    <script>
+        // ===== FAQ TOGGLE =====
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== FLOATING CTA ON SCROLL =====
+        const floatingCta = document.getElementById('floatingCta');
+        const heroSection = document.querySelector('.hero');
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            if (heroBottom < 0 && window.innerWidth <= 768) {
+                floatingCta.style.display = 'block';
+            } else {
+                floatingCta.style.display = 'none';
+            }
+        });
+
+        // ===== CONFETTI =====
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#FFD93D', '#6EC6FF', '#6BCB77', '#FF8C94', '#B388FF', '#FF6B6B', '#7868E6'];
+
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 4 + 's';
+                confetti.style.animationDuration = (3 + Math.random() * 3) + 's';
+                confetti.style.width = (6 + Math.random() * 8) + 'px';
+                confetti.style.height = (6 + Math.random() * 8) + 'px';
+                container.appendChild(confetti);
+            }
+        }
+
+        createConfetti();
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
