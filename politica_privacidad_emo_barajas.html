@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Emo Barajas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fraunces:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple:     #6A1B9A;
+      --purple-lt:  #9C27B0;
+      --yellow:     #FFD93D;
+      --bg:         #F9F4FF;
+      --card:       #FFFFFF;
+      --text:       #1A1A2E;
+      --muted:      #6B6B8A;
+      --border:     #E8DEFF;
+      --radius:     14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--purple);
+      padding: 48px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, #8E24AA55 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, #4A148C66 0%, transparent 60%);
+    }
+    .header-inner { position: relative; z-index: 1; }
+    .app-emoji { font-size: 52px; display: block; margin-bottom: 10px; }
+    header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(26px, 6vw, 38px);
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    header h1 span {
+      color: var(--yellow);
+      font-style: italic;
+    }
+    .header-sub {
+      margin-top: 6px;
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+
+    /* ── Intro badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      color: var(--purple);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .intro strong { color: var(--text); }
+
+    /* ── Sections ── */
+    section {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 16px; bottom: 16px;
+      width: 4px;
+      background: var(--purple);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+    .section-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    p { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 700; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+    ul li {
+      font-size: 15px;
+      color: var(--muted);
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--purple-lt);
+      font-size: 11px;
+      top: 8px;
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: #F3E5F5;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--purple);
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .highlight span { font-size: 20px; }
+
+    /* ── Contact ── */
+    .contact-box {
+      background: var(--purple);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 32px;
+      text-align: center;
+      color: #fff;
+    }
+    .contact-box h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .contact-box p { color: rgba(255,255,255,0.78); font-size: 14px; }
+    .contact-box a {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--yellow);
+      color: var(--purple);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 99px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1.5px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="app-emoji">🎡</span>
+    <h1>Emo <span>Barajas</span></h1>
+    <p class="header-sub">Política de Privacidad &nbsp;·&nbsp; Vigente desde abril 2026</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="badge">📋 Documento legal</div>
+
+  <div class="intro">
+    Esta política describe cómo <strong>Emo Barajas</strong> maneja la información de sus usuarios.
+    Al usar la aplicación, aceptas los términos descritos aquí.
+    Nos comprometemos a ser transparentes y a proteger tu privacidad.
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">📦</span>
+      Datos que recopilamos
+    </h2>
+    <p><strong>Emo Barajas no recopila datos personales.</strong> La app funciona completamente sin conexión a internet y no solicita nombre, correo electrónico, ubicación ni ningún otro dato de identificación.</p>
+    <p>El único dato almacenado en el dispositivo es una preferencia local:</p>
+    <ul>
+      <li>Si el usuario activó la opción <em>"No mostrar otra vez"</em> en la pantalla de introducción.</li>
+    </ul>
+    <div class="highlight">
+      <span>🔒</span>
+      Este dato se guarda exclusivamente en el dispositivo del usuario y nunca sale de él.
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">🌐</span>
+      Conexión a internet
+    </h2>
+    <p><strong>La aplicación no requiere conexión a internet</strong> para funcionar. No realiza peticiones a servidores externos, no utiliza servicios en la nube ni APIs de terceros.</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">👶</span>
+      Público infantil
+    </h2>
+    <p>Emo Barajas está diseñada para niños y niñas en etapa escolar. En cumplimiento de la normativa aplicable sobre privacidad infantil:</p>
+    <ul>
+      <li>No recopilamos datos de menores de ningún tipo.</li>
+      <li>No mostramos publicidad de ningún tipo.</li>
+      <li>No incluimos compras dentro de la aplicación.</li>
+      <li>No existen funciones sociales ni de comunicación entre usuarios.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">📊</span>
+      Análisis y terceros
+    </h2>
+    <p>La aplicación <strong>no integra SDKs de análisis, publicidad, redes sociales ni servicios de terceros</strong> (como Google Analytics, Firebase, Facebook SDK u otros similares).</p>
+    <p>No se comparte ningún tipo de información con terceros porque no existe información que compartir.</p>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">🛡️</span>
+      Seguridad
+    </h2>
+    <p>Dado que no recopilamos ni transmitimos datos, el riesgo de exposición de información personal es nulo. La preferencia guardada localmente está protegida por los mecanismos de seguridad del sistema operativo Android.</p>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">✏️</span>
+      Cambios a esta política
+    </h2>
+    <p>Si en el futuro se realizan cambios significativos en la forma en que la aplicación maneja datos, esta política será actualizada. Se notificará mediante una nueva versión publicada en Google Play.</p>
+    <p>Te recomendamos revisar esta página ocasionalmente.</p>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2 class="section-title">
+      <span class="section-icon">⚖️</span>
+      Marco legal aplicable
+    </h2>
+    <p>Esta política se elabora en cumplimiento de las políticas de Google Play, el Reglamento General de Protección de Datos (RGPD) donde aplique, y la legislación de protección de datos de Colombia (Ley 1581 de 2012).</p>
+  </section>
+
+  <!-- Contacto -->
+  <div class="contact-box">
+    <h3>¿Tienes preguntas?</h3>
+    <p>Si tienes dudas sobre esta política de privacidad o el manejo de datos dentro de la app, puedes contactarnos.</p>
+    <a href="mailto:privacidad@emobarajas.app">info.m1n1m4l1st@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Emo Barajas &nbsp;·&nbsp; Todos los derechos reservados &nbsp;·&nbsp;
+  Última actualización: 28 abril 2026
+</footer>
+
+</body>
+</html>
