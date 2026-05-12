@@ -1629,6 +1629,69 @@
         .youtube-container {
             animation: fadeInUp 0.8s ease-out 0.3s both;
         }
+
+        /* Estilos del contador regresivo */
+        .urgency-bar {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .countdown-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .countdown-label {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        .countdown-display {
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 5px 12px;
+            border-radius: 10px;
+            line-height: 1;
+            min-width: 75px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        /* Cuando queda poco tiempo (opcional: se pone más llamativo) */
+        .countdown-display.urgent {
+            animation: pulseRed 1s infinite;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulseRed {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-display {
+                font-size: 18px;
+                padding: 4px 8px;
+            }
+
+            .countdown-label {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -1669,8 +1732,7 @@
                 <span class="highlight-blue">Simple, Ligera y Divertida</span>
             </h1>
             <div class="hero-video-container youtube-container">
-                <iframe width="100%" height="100%"
-                    src="https://www.youtube.com/embed/HKJYV_z5bAM?autoplay=1&mute=1"
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/HKJYV_z5bAM?autoplay=1&mute=1"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
@@ -2007,10 +2069,18 @@
                 <div class="pricing-guarantee">
                     🛡️ Garantía de devolución de 7 días — Sin preguntas
                 </div>
-
+               <!--
                 <div class="urgency-bar">
                     <span class="emoji">⏰</span>
                     <p>¡Oferta termina pronto! El precio vuelve a $37 USD</p>
+                </div>
+            -->
+                <div class="urgency-bar">
+                    <span class="emoji"></span>
+                    <div class="countdown-container">
+                        <p class="countdown-label">La oferta termina en:</p>
+                        <div class="countdown-display" id="countdown">10:00</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2217,6 +2287,49 @@
                 }
             });
         });
+    </script>
+    <script>
+        (function () {
+            // ⏱️ Duración: 10 minutos (600 segundos)
+            const DURATION_SECONDS = 10 * 60;
+
+            const timerEl = document.getElementById('countdown');
+            if (!timerEl) return;
+
+            // Verificar si ya existe un tiempo guardado
+            let endTime = localStorage.getItem('emoBarajasOfferEnd');
+
+            if (!endTime) {
+                // Primera visita: guardar hora de fin
+                endTime = Date.now() + (DURATION_SECONDS * 1000);
+                localStorage.setItem('emoBarajasOfferEnd', endTime);
+            }
+
+            function updateTimer() {
+                const now = Date.now();
+                const diff = Math.max(0, Math.floor((endTime - now) / 1000));
+
+                if (diff <= 0) {
+                    timerEl.textContent = "00:00";
+                    timerEl.classList.add('urgent');
+                    clearInterval(interval);
+                    localStorage.removeItem('emoBarajasOfferEnd');
+                    return;
+                }
+
+                const mins = Math.floor(diff / 60);
+                const secs = diff % 60;
+                timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+                // Efecto visual cuando queda menos de 2 minutos
+                if (diff < 120) {
+                    timerEl.classList.add('urgent');
+                }
+            }
+
+            updateTimer(); // Ejecutar inmediatamente
+            const interval = setInterval(updateTimer, 1000);
+        })();
     </script>
 </body>
 
